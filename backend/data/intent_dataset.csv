@@ -1,0 +1,1002 @@
+query,intent
+What is the fee for BTech CSE?,fees
+How much does BTech cost at BMU?,fees
+Tell me about the fee structure,fees
+What is the tuition fee?,fees
+How much is the annual fee?,fees
+What are the charges for BTech?,fees
+Fee kitni hai BTech ki?,fees
+Kitna paisa lagega BTech mein?,fees
+BTech CSE ki fees kitni hai?,fees
+Fees kya hai engineering ki?,fees
+How much does it cost to study engineering?,fees
+What is the yearly fee for CSE?,fees
+BTech fee structure kya hai?,fees
+Engineering mein kitna kharcha hai?,fees
+What is the cost of BTech program?,fees
+How much is the tuition for computer science?,fees
+Fees for mechanical engineering?,fees
+What is the fee for electronics?,fees
+EComE ki fees kitni hai?,fees
+Mechanical engineering ka kharcha?,fees
+What is the MBA fee?,fees
+MBA ki fees kya hai?,fees
+How much does MBA cost?,fees
+MBA program ki fees batao,fees
+LLB NLP PROJECT/bmu-advanced-call-agent/backend/data/intent_dataset.csv kitni hai?,fees
+BA LLB ka kharcha kitna hai?,fees
+BBA fees kya hai?,fees
+B.Com ki fees kitni hai?,fees
+What is the fee for BBA?,fees
+Fees for liberal arts?,fees
+BA Liberal Arts ki fees?,fees
+How much is the PhD fee?,fees
+MTech fees kya hai?,fees
+What is the fee for MTech?,fees
+fess kitni hai cse ki?,fees
+BTech ki fes kya hai?,fees
+Fees batao mujhe,fees
+Kitni fees lagti hai yahan?,fees
+What are the annual charges?,fees
+How much to pay per year?,fees
+Yearly expense at BMU?,fees
+Cost of studying at BMU?,fees
+What is the per year fee?,fees
+Annual fee kya hai?,fees
+Semester fee kitni hai?,fees
+Per semester kitna lagta hai?,fees
+What is the semester wise fee?,fees
+Semester mein kitna pay karna hoga?,fees
+Total fee for 4 years?,fees
+What is the total cost of BTech?,fees
+Total 4 saal mein kitna lagega?,fees
+Complete fee for entire course?,fees
+All inclusive fee at BMU?,fees
+What is the total fee with hostel?,fees
+Fee with accommodation included?,fees
+Total cost including hostel and food?,fees
+Hostel ke saath total kitna lagega?,fees
+What will be my total yearly expense?,fees
+How much is the fee with hostel per year?,fees
+Can I get a scholarship at BMU?,scholarship
+Is there any scholarship available?,scholarship
+Tell me about scholarships,scholarship
+What scholarships does BMU offer?,scholarship
+I want to know about the scholarship program at BMU,scholarship
+Scholarship milegi kya?,scholarship
+Kya scholarship milegi?,scholarship
+Mujhe scholarship chahiye,scholarship
+Scholarship ke baare mein batao,scholarship
+Is there merit based scholarship?,scholarship
+How much scholarship do I get?,scholarship
+What is the scholarship criteria?,scholarship
+Scholarship ke liye kya chahiye?,scholarship
+Scholarship eligibility kya hai?,scholarship
+I scored 88 percent will I get discount?,scholarship
+Meri 88 percent hai koi scholarship milegi?,scholarship
+90 percent pe kitni scholarship milegi?,scholarship
+What scholarship do I get with 90 percent marks?,scholarship
+85 percent pe koi discount hai?,scholarship
+How much fee waiver for 85 percent?,scholarship
+Is there scholarship for girls?,scholarship
+What scholarships are available for girls?,scholarship
+Girl students ko koi extra scholarship hai?,scholarship
+Female students ke liye scholarship?,scholarship
+Is there sports scholarship?,scholarship
+National level sports scholarship kya hai?,scholarship
+Need based scholarship hai kya?,scholarship
+Financial help milti hai kya?,scholarship
+Is there any financial help available?,scholarship
+Financial assistance ke baare mein batao,scholarship
+Fee mein koi discount hai?,scholarship
+Koi fee reduction milti hai?,scholarship
+Fee kam ho sakti hai kya?,scholarship
+Concession milega kya fees mein?,scholarship
+Top rankers ko kya milta hai?,scholarship
+Entrance exam topper ko scholarship?,scholarship
+100 percent scholarship kaise milegi?,scholarship
+Full scholarship possible hai kya?,scholarship
+scolarship milegi kya?,scholarship
+scholership ke baare mein batao,scholarship
+skolarship criteria kya hai?,scholarship
+Merit scholarship details?,scholarship
+Academic scholarship kya hai?,scholarship
+Scholarship for economically weak students?,scholarship
+Low income family ke liye scholarship?,scholarship
+Scholarship amount kitna hai?,scholarship
+How much is the scholarship amount?,scholarship
+Scholarship renewal hoti hai kya?,scholarship
+Is scholarship renewable every year?,scholarship
+Scholarship ke liye apply kaise karein?,scholarship
+How to apply for scholarship?,scholarship
+How are the placements at BMU?,placement
+Tell me about placements,placement
+What is the placement record?,placement
+Placement kaisi hai BMU mein?,placement
+Placement ka kya scene hai?,placement
+Kaunsi companies aati hain?,placement
+Which companies come for campus recruitment?,placement
+Top recruiters at BMU?,placement
+Which companies hire from BMU?,placement
+Does Google recruit from BMU?,placement
+Google aata hai kya campus mein?,placement
+What is the highest package at BMU?,placement
+Highest package kitna mila?,placement
+Maximum salary at BMU?,placement
+Best package kya tha?,placement
+What is the average salary after BTech?,placement
+Average package kya hai?,placement
+Average CTC kitna hai?,placement
+Top 10 percent ka average package?,placement
+What is the placement percentage?,placement
+Kitne percent students placed hote hain?,placement
+Career prospects after BMU?,placement
+Job opportunities after BTech?,placement
+Employment after graduation?,placement
+Naukri milegi kya BMU se?,placement
+Job milega kya?,placement
+placment kaisi hai?,placement
+plcement statistics kya hai?,placement
+Campus placement details?,placement
+Off campus placement bhi hoti hai?,placement
+Internship opportunities at BMU?,placement
+Internship milti hai kya?,placement
+Summer internship kaise milti hai?,placement
+Industry exposure at BMU?,placement
+What companies visit BMU campus?,placement
+Deloitte aata hai kya?,placement
+HCL recruits from BMU?,placement
+KPMG placement at BMU?,placement
+Tata Digital hiring from BMU?,placement
+MG Motors placement?,placement
+L&T recruitment at BMU?,placement
+ServiceNow hiring?,placement
+Commvault placement?,placement
+What is the placement cell?,placement
+Placement cell kya karta hai?,placement
+How does placement process work?,placement
+Placement process kya hai?,placement
+When does placement season start?,placement
+Placement season kab hoti hai?,placement
+What courses does BMU offer?,courses
+Tell me about all the programs at BMU,courses
+What are the available courses?,courses
+BMU mein kaunse courses hain?,courses
+Kaunse programs hain BMU mein?,courses
+All courses at BMU?,courses
+List of programs at BMU?,courses
+What degrees does BMU offer?,courses
+Which streams are available?,courses
+Courses available at BMU?,courses
+Tell me about the Computer Science program,courses
+I want to know about CSE,courses
+CSE branch details?,courses
+What is BTech CSE?,courses
+Computer Science engineering ke baare mein batao,courses
+Tell me about BTech branches,courses
+What are the BTech branches available?,courses
+Engineering branches at BMU?,courses
+BTech mein kaunsi branches hain?,courses
+Which engineering branch is best?,courses
+What specializations are available in CSE?,courses
+CSE specializations kya hain?,courses
+AI specialization in CSE?,courses
+Data Science specialization?,courses
+Cyber Security course hai kya?,courses
+Does BMU have a law program?,courses
+Law program ke baare mein batao,courses
+BA LLB program details?,courses
+BBA LLB kya hai?,courses
+Is there an MBA program at BMU?,courses
+Tell me about MBA,courses
+MBA program details?,courses
+MBA ke baare mein batao,courses
+BBA program kya hai?,courses
+B.Com course details?,courses
+Liberal Arts program?,courses
+BA Liberal Arts ke baare mein batao,courses
+Is there MTech at BMU?,courses
+MTech program details?,courses
+PhD program hai kya?,courses
+Research programs at BMU?,courses
+Integrated BBA MBA kya hai?,courses
+5 year integrated program?,courses
+Executive MBA hai kya?,courses
+Part time MBA available?,courses
+How do I apply to BMU?,admission
+What is the admission process?,admission
+I want to take admission at BMU,admission
+How to get admission in BMU?,admission
+Admission kaise hoga?,admission
+Admission process kya hai?,admission
+Apply kaise karein BMU mein?,admission
+How to apply for BTech?,admission
+BTech admission process?,admission
+Admission ke liye kya karna hoga?,admission
+Can I get admission without JEE?,admission
+JEE ke bina admission ho sakta hai?,admission
+Is JEE mandatory for BTech?,admission
+CUET se admission hota hai kya?,admission
+BMU SAT kya hai?,admission
+What entrance exams are accepted?,admission
+Kaunse entrance exams chalte hain?,admission
+JEE score se admission milega?,admission
+SAT score accepted hai kya?,admission
+CLAT ke baare mein batao,admission
+Law ke liye kaunsa exam chahiye?,admission
+MBA ke liye kaunsa exam chahiye?,admission
+CAT score se MBA admission?,admission
+MAT se admission hota hai kya?,admission
+What is the eligibility for BTech?,admission
+BTech ke liye kya eligibility hai?,admission
+Minimum marks for BTech?,admission
+What marks do I need for BTech?,admission
+60 percent chahiye kya BTech ke liye?,admission
+PCM mein kitne marks chahiye?,admission
+Class 12 mein kitne percent chahiye?,admission
+Eligibility criteria kya hai?,admission
+Am I eligible for BTech?,admission
+eligiblity kya hai btech?,admission
+addmision process kya hai?,admission
+What documents do I need for admission?,admission
+Which documents are required?,admission
+Documents ki list batao,admission
+kya kya documents chahiye?,admission
+Admission ke liye kaunse documents chahiye?,admission
+Marksheet chahiye kya?,admission
+Aadhar card required hai?,admission
+Transfer certificate chahiye?,admission
+Character certificate kya hota hai?,admission
+Income certificate kab chahiye?,admission
+Caste certificate required hai kya?,admission
+Original documents kab chahiye?,admission
+When is the admission deadline?,admission
+Last date for admission?,admission
+Admission ki last date kya hai?,admission
+Application deadline kab hai?,admission
+When does admission start?,admission
+Admission kab se shuru hota hai?,admission
+Tell me about the hostel facilities,hostel
+I want to know about hostel,hostel
+Hostel ke baare mein batao,hostel
+Hostel facilities kya hain?,hostel
+What are the hostel amenities?,hostel
+Is food included in the hostel?,hostel
+Hostel mein khana milta hai?,hostel
+Kya hostel mein khana included hai?,hostel
+Food included in hostel fee?,hostel
+Mess facility hai kya hostel mein?,hostel
+Are the hostel rooms AC?,hostel
+Hostel mein AC hai kya?,hostel
+AC rooms hain kya hostel mein?,hostel
+What type of rooms are in hostel?,hostel
+Single room available hai kya?,hostel
+Double room ya triple room?,hostel
+What are the hostel charges?,hostel
+Hostel ka kharcha kitna hai?,hostel
+Hostel fee kitni hai?,hostel
+Hostel ki fees kya hai?,hostel
+Per year hostel charges?,hostel
+Is there separate hostel for girls?,hostel
+Girls hostel hai kya?,hostel
+Boys aur girls ka alag hostel hai?,hostel
+Girls hostel safe hai kya?,hostel
+Security in girls hostel?,hostel
+Is WiFi available in hostel?,hostel
+Hostel mein WiFi hai kya?,hostel
+Internet facility in hostel?,hostel
+Gym in hostel?,hostel
+Hostel mein gym hai kya?,hostel
+Laundry service in hostel?,hostel
+Medical facility in hostel?,hostel
+Doctor on campus hai kya?,hostel
+CCTV in hostel?,hostel
+Hostel security kaisi hai?,hostel
+hostl mein room chahiye,hostel
+hostle facilities kya hain?,hostel
+Accommodation options at BMU?,hostel
+Can I stay on campus?,hostel
+On campus living options?,hostel
+PG available hai kya?,hostel
+Off campus accommodation?,hostel
+Where is BMU located?,location
+How far is BMU from Delhi?,location
+What is the address of BMU?,location
+Where is BMU exactly?,location
+BMU kahan hai?,location
+BMU ka address kya hai?,location
+How to reach BMU?,location
+BMU kaise pahunche?,location
+Distance from Delhi to BMU?,location
+Delhi se BMU kitna door hai?,location
+Is BMU in Gurgaon?,location
+BMU Gurugram mein hai kya?,location
+Which highway is BMU on?,location
+NH48 par hai kya BMU?,location
+What is the nearest metro to BMU?,location
+Nearest railway station to BMU?,location
+How to come from Delhi to BMU?,location
+Bus service hai kya BMU ke liye?,location
+Transport facility to BMU?,location
+What is the contact number for admissions?,location
+Admissions ka phone number kya hai?,location
+BMU ka contact number?,location
+Email address for admissions?,location
+Admissions email kya hai?,location
+How to contact BMU admissions?,location
+BMU website kya hai?,location
+Official website of BMU?,location
+Can I visit the campus?,location
+Campus visit kaise karein?,location
+Campus tour available hai kya?,location
+Tell me about BMU,about
+What is BML Munjal University?,about
+Give me an overview of BMU,about
+BMU ke baare mein batao,about
+About BMU university,about
+Is BMU a good university?,about
+BMU kaisi university hai?,about
+BMU ka ranking kya hai?,about
+What is BMU's NAAC grade?,about
+NAAC grade kya hai BMU ka?,about
+Is BMU NAAC accredited?,about
+QS ranking of BMU?,about
+NIRF ranking of BMU?,about
+BMU ka NIRF rank kya hai?,about
+Who founded BMU?,about
+BMU kab bana?,about
+Hero Group ka university hai kya?,about
+Is BMU backed by Hero Group?,about
+How old is BMU?,about
+BMU ki history kya hai?,about
+How many schools are in BMU?,about
+BMU mein kitne schools hain?,about
+What are the schools at BMU?,about
+Engineering school at BMU?,about
+School of Management at BMU?,about
+School of Law at BMU?,about
+Liberal Arts school at BMU?,about
+Is BMU a private university?,about
+Government ya private university hai BMU?,about
+BMU private hai ya government?,about
+Is BMU UGC approved?,about
+UGC approved hai kya BMU?,about
+BMU accreditation status?,about
+Awards and recognition of BMU?,about
+BMU ke awards kya hain?,about
+QS I-Gauge rating kya hai?,about
+Diamond rating kya hota hai?,about
+BMU research facilities?,about
+Research opportunities at BMU?,about
+Faculty quality at BMU?,about
+International exposure at BMU?,about
+Global programs at BMU?,about
+Student life at BMU?,about
+Campus life kaisi hai?,about
+Extracurricular activities at BMU?,about
+Clubs and societies at BMU?,about
+Sports facilities at BMU?,about
+BMU kidhar hai?,location
+Gurugram mein kahan hai BMU?,location
+Sidhrawali kahan hai?,location
+How many km from Delhi?,location
+Delhi se kitne km hai?,location
+Is BMU near Delhi?,location
+BMU Delhi ke paas hai kya?,location
+Nearest city to BMU?,location
+BMU ke paas kaunsa city hai?,location
+How to go to BMU from Delhi?,location
+Delhi se BMU kaise jaayein?,location
+Auto or cab available to BMU?,location
+Taxi service to BMU?,location
+Is there a shuttle from metro?,location
+Metro se BMU kaise pahunche?,location
+Haryana mein hai kya BMU?,location
+State mein hai BMU?,location
+Pin code of BMU?,location
+BMU ka pin code kya hai?,location
+Admission office ka number?,location
+What is the fee structure at BMU?,fees
+How much do I need to pay for BTech?,fees
+Fee details for engineering program?,fees
+What is the cost of education at BMU?,fees
+Yearly fees at BML Munjal University?,fees
+How much is the tuition at BMU?,fees
+Engineering program cost?,fees
+What are the charges for CSE?,fees
+CSE program fee details?,fees
+How much for computer science degree?,fees
+Fee for 4 year BTech program?,fees
+What is the annual tuition?,fees
+Semester charges at BMU?,fees
+How much per semester?,fees
+Quarterly fee payment?,fees
+Fee installment options?,fees
+Can I pay fees in installments?,fees
+Monthly fee payment possible?,fees
+Fee payment schedule?,fees
+When is fee due?,fees
+Fee due date kab hai?,fees
+Fees kab bharne hote hain?,fees
+Fees ka schedule kya hai?,fees
+Kitne mein hoga BTech?,fees
+BTech mein total kitna lagega?,fees
+Poore course ki fees kitni hai?,fees
+4 saal ki total fees?,fees
+Engineering ki total fees?,fees
+CSE 4 year total cost?,fees
+Complete BTech fee breakdown?,fees
+Fee breakdown for BTech CSE?,fees
+Detailed fee structure?,fees
+Fee components kya hain?,fees
+Tuition plus hostel total?,fees
+All inclusive annual cost?,fees
+What is included in the fee?,fees
+Fee mein kya kya included hai?,fees
+Development fee kya hai?,fees
+Lab fee kitni hai?,fees
+Library fee included hai kya?,fees
+Exam fee alag se hai kya?,fees
+Registration fee kitni hai?,fees
+Admission fee kitni hai?,fees
+One time admission charges?,fees
+Security deposit kitna hai?,fees
+Refundable deposit hai kya?,fees
+Fee refund policy kya hai?,fees
+Kya fees refund hoti hai?,fees
+Fee wapas milegi kya?,fees
+Scholarship ke baad kitni fees bachegi?,fees
+Net fees after scholarship?,fees
+Effective fee after discount?,fees
+Scholarship ke baad net fee?,fees
+Reduced fee after merit scholarship?,fees
+How much after scholarship deduction?,fees
+I want to apply for scholarship,scholarship
+Scholarship apply karna hai,scholarship
+How to get scholarship at BMU?,scholarship
+Scholarship lene ka process?,scholarship
+Scholarship ke liye kaise apply karein?,scholarship
+Scholarship application process?,scholarship
+Merit scholarship kaise milti hai?,scholarship
+How is merit scholarship awarded?,scholarship
+Academic scholarship criteria?,scholarship
+Scholarship for good marks?,scholarship
+Good marks pe scholarship milti hai?,scholarship
+High scorer scholarship?,scholarship
+Topper scholarship kya hai?,scholarship
+Rank 1 ko kya milta hai?,scholarship
+First rank scholarship?,scholarship
+Entrance exam scholarship?,scholarship
+JEE rank pe scholarship?,scholarship
+JEE topper scholarship?,scholarship
+CUET score scholarship?,scholarship
+Scholarship based on entrance rank?,scholarship
+Sports quota scholarship?,scholarship
+Athlete scholarship at BMU?,scholarship
+State level sports scholarship?,scholarship
+District level sports scholarship?,scholarship
+Cultural scholarship hai kya?,scholarship
+Arts scholarship available?,scholarship
+Music scholarship at BMU?,scholarship
+Dance scholarship hai kya?,scholarship
+Scholarship for differently abled?,scholarship
+Disability scholarship?,scholarship
+PWD scholarship at BMU?,scholarship
+SC ST scholarship?,scholarship
+OBC scholarship at BMU?,scholarship
+Reserved category scholarship?,scholarship
+EWS scholarship kya hai?,scholarship
+Economically weaker section scholarship?,scholarship
+BPL family scholarship?,scholarship
+Below poverty line scholarship?,scholarship
+Sibling scholarship hai kya?,scholarship
+Brother sister same college discount?,scholarship
+Alumni child scholarship?,scholarship
+Faculty ward scholarship?,scholarship
+Employee child scholarship?,scholarship
+Scholarship kitne saal milti hai?,scholarship
+Scholarship duration kya hai?,scholarship
+Scholarship renewal criteria?,scholarship
+Scholarship maintain karne ke liye kya chahiye?,scholarship
+Minimum marks to keep scholarship?,scholarship
+Scholarship cancel hoti hai kya?,scholarship
+Scholarship revoke ho sakti hai?,scholarship
+Scholarship terms and conditions?,scholarship
+Scholarship rules kya hain?,scholarship
+How many students get scholarship?,scholarship
+Scholarship percentage kitna hai?,scholarship
+Kitne percent students ko scholarship milti hai?,scholarship
+Scholarship kitne students ko milti hai?,scholarship
+Total scholarship amount per year?,scholarship
+Maximum scholarship amount?,scholarship
+Scholarship kitni badi hoti hai?,scholarship
+50 percent scholarship kaise milegi?,scholarship
+Half fee scholarship criteria?,scholarship
+Full scholarship possible hai?,scholarship
+100 percent fee waiver kaise?,scholarship
+Free education possible at BMU?,scholarship
+Placement statistics at BMU?,placement
+BMU placement data?,placement
+Recent placement record?,placement
+Last year placement?,placement
+2024 placement statistics?,placement
+2025 placement data?,placement
+Placement report kya hai?,placement
+Annual placement report?,placement
+How many students got placed?,placement
+Placement percentage kya hai?,placement
+Kitne percent students placed hue?,placement
+100 percent placement hai kya?,placement
+Placement guarantee hai kya?,placement
+Guaranteed placement at BMU?,placement
+Job guarantee after BTech?,placement
+Assured placement program?,placement
+Placement assistance at BMU?,placement
+Career support at BMU?,placement
+Career guidance available?,placement
+Career counseling at BMU?,placement
+Resume building help?,placement
+Interview preparation at BMU?,placement
+Mock interview hoti hai kya?,placement
+Soft skills training?,placement
+Communication skills training?,placement
+Aptitude training at BMU?,placement
+Technical training for placement?,placement
+Coding bootcamp at BMU?,placement
+Hackathon at BMU?,placement
+Industry projects at BMU?,placement
+Live projects available?,placement
+Industry internship program?,placement
+6 month internship available?,placement
+Paid internship milti hai?,placement
+Stipend kitna milta hai internship mein?,placement
+Internship stipend?,placement
+Which sector companies recruit?,placement
+IT companies at BMU?,placement
+Core engineering companies?,placement
+Finance companies placement?,placement
+Consulting firms at BMU?,placement
+Big 4 companies at BMU?,placement
+FAANG companies at BMU?,placement
+Product companies at BMU?,placement
+Service companies at BMU?,placement
+Startup hiring at BMU?,placement
+Government jobs after BMU?,placement
+PSU recruitment at BMU?,placement
+GATE ke baad kya?,placement
+Higher studies after BTech?,placement
+MS abroad after BMU?,placement
+GRE preparation support?,placement
+GMAT coaching at BMU?,placement
+CAT preparation at BMU?,placement
+MBA after BTech?,placement
+Dual degree option?,placement
+What is the admission procedure?,admission
+Admission procedure kya hai?,admission
+Step by step admission process?,admission
+Online admission process?,admission
+Offline admission available?,admission
+Direct admission possible?,admission
+Management quota admission?,admission
+NRI admission process?,admission
+Foreign student admission?,admission
+International student admission?,admission
+Admission for NRI students?,admission
+Overseas admission process?,admission
+Transfer admission possible?,admission
+Lateral entry admission?,admission
+Direct second year admission?,admission
+Lateral entry BTech?,admission
+Diploma to BTech admission?,admission
+Polytechnic to BTech?,admission
+What is the application fee?,admission
+Application form fee?,admission
+Online form kaise bharen?,admission
+How to fill application form?,admission
+Application form fill karne ka process?,admission
+Documents upload kaise karein?,admission
+Online documents submission?,admission
+Physical documents kab submit karein?,admission
+Document verification process?,admission
+When is document verification?,admission
+Counselling process kya hai?,admission
+Counselling kab hoti hai?,admission
+Seat allotment process?,admission
+Seat confirmation kaise karein?,admission
+Seat booking fee?,admission
+Seat blocking amount?,admission
+Provisional admission kya hota hai?,admission
+Provisional admission process?,admission
+Waiting list process?,admission
+Waitlist mein hoon kya karein?,admission
+Spot admission available?,admission
+Last minute admission possible?,admission
+Admission cancel kaise karein?,admission
+Withdrawal process?,admission
+Fee refund on withdrawal?,admission
+Admission withdraw karne par fees wapas?,admission
+Re-admission possible?,admission
+Gap year student admission?,admission
+Year gap allowed?,admission
+1 year gap allowed for BTech?,admission
+2 year gap allowed?,admission
+Age limit for admission?,admission
+Maximum age for BTech?,admission
+Minimum age requirement?,admission
+What is the cutoff?,admission
+Previous year cutoff?,admission
+Expected cutoff this year?,admission
+JEE cutoff for BMU?,admission
+CUET cutoff kya hai?,admission
+Merit list kab aayegi?,admission
+Result kab aayega?,admission
+Admission result date?,admission
+Tell me about campus life,about
+Student life at BMU?,about
+How is life at BMU?,about
+BMU mein kaisa mahaul hai?,about
+Campus environment kaisa hai?,about
+Is BMU a good place to study?,about
+BMU padhai ke liye achha hai?,about
+Academic environment at BMU?,about
+Teaching quality at BMU?,about
+Faculty experience at BMU?,about
+Professor qualification at BMU?,about
+Industry experienced faculty?,about
+Research faculty at BMU?,about
+PhD faculty percentage?,about
+International faculty at BMU?,about
+Foreign professors at BMU?,about
+Guest lectures at BMU?,about
+Industry experts visit BMU?,about
+Seminars and workshops?,about
+Technical events at BMU?,about
+Cultural events at BMU?,about
+Annual fest at BMU?,about
+College fest kab hota hai?,about
+Techfest at BMU?,about
+Cultural fest at BMU?,about
+Sports events at BMU?,about
+Annual sports meet?,about
+Inter college competitions?,about
+Student clubs at BMU?,about
+Technical clubs available?,about
+Coding club at BMU?,about
+Robotics club?,about
+Music club at BMU?,about
+Dance club?,about
+Drama club?,about
+Photography club?,about
+Entrepreneurship cell?,about
+E-cell at BMU?,about
+Startup incubator at BMU?,about
+Innovation center at BMU?,about
+Research center at BMU?,about
+Labs and equipment quality?,about
+State of art labs?,about
+Modern infrastructure?,about
+Smart classrooms?,about
+Digital library?,about
+Online resources available?,about
+E-learning platform?,about
+LMS at BMU?,about
+Student teacher ratio?,about
+Class size at BMU?,about
+Batch size kitna hai?,about
+How many students per class?,about
+Diversity at BMU?,about
+Students from different states?,about
+International students at BMU?,about
+Foreign students percentage?,about
+Alumni network at BMU?,about
+BMU alumni kahan hain?,about
+Famous alumni of BMU?,about
+Alumni success stories?,about
+BMU reputation in industry?,about
+Industry recognition of BMU?,about
+Is BMU degree valued?,about
+BMU degree ki value kya hai?,about
+Accreditation details?,about
+NBA accreditation?,about
+AICTE approved?,about
+UGC recognized?,about
+Autonomous status?,about
+Deemed university status?,about
+What type of university is BMU?,about
+Private deemed university?,about
+Tell me about hostel food,hostel
+Hostel mein kya khana milta hai?,hostel
+Food quality in hostel?,hostel
+Mess food kaisa hai?,hostel
+Vegetarian food available?,hostel
+Non veg food in hostel?,hostel
+Veg non veg dono milta hai?,hostel
+Special diet available?,hostel
+Jain food available?,hostel
+Healthy food options?,hostel
+Canteen vs mess?,hostel
+Outside food allowed?,hostel
+Food delivery allowed in hostel?,hostel
+Zomato Swiggy allowed?,hostel
+Mess timing kya hai?,hostel
+Breakfast timing?,hostel
+Lunch timing?,hostel
+Dinner timing?,hostel
+Late night food available?,hostel
+Midnight snacks?,hostel
+Hostel curfew timing?,hostel
+Hostel entry exit timing?,hostel
+Night out allowed?,hostel
+Permission for going out?,hostel
+Hostel rules kya hain?,hostel
+Hostel regulations?,hostel
+Mobile phone allowed in hostel?,hostel
+Laptop allowed in hostel?,hostel
+Visitor policy in hostel?,hostel
+Parents visit hostel?,hostel
+Guest room available?,hostel
+Common room in hostel?,hostel
+TV room in hostel?,hostel
+Indoor games in hostel?,hostel
+Table tennis in hostel?,hostel
+Carrom board available?,hostel
+Study room in hostel?,hostel
+Quiet hours in hostel?,hostel
+Noise policy in hostel?,hostel
+Hostel warden contact?,hostel
+Hostel complaint process?,hostel
+Hostel maintenance?,hostel
+Room cleaning service?,hostel
+Housekeeping in hostel?,hostel
+Hot water available?,hostel
+Geyser in hostel?,hostel
+Washing machine in hostel?,hostel
+Iron available in hostel?,hostel
+Power backup in hostel?,hostel
+Generator in hostel?,hostel
+Inverter backup?,hostel
+Emergency medical in hostel?,hostel
+First aid in hostel?,hostel
+Ambulance available?,hostel
+How to reach BMU by road?,location
+Road route to BMU?,location
+Highway to BMU?,location
+NH48 se BMU kaise jaayein?,location
+Delhi Jaipur highway pe hai?,location
+Expressway se BMU?,location
+Toll on the way to BMU?,location
+Parking at BMU?,location
+Car parking available?,location
+Two wheeler parking?,location
+Bike parking at BMU?,location
+Public transport to BMU?,location
+Bus route to BMU?,location
+Which bus goes to BMU?,location
+DTC bus to BMU?,location
+Haryana roadways to BMU?,location
+Train to BMU?,location
+Nearest railway station?,location
+Gurgaon station se BMU?,location
+Auto rickshaw to BMU?,location
+Cab from Gurgaon to BMU?,location
+Ola Uber available?,location
+Taxi from Delhi airport to BMU?,location
+Airport to BMU distance?,location
+IGI airport se BMU kitna door?,location
+Flight to Gurgaon?,location
+Nearest airport to BMU?,location
+BMU se market kitna door hai?,location
+Shopping mall near BMU?,location
+Hospital near BMU?,location
+ATM near BMU?,location
+Bank near BMU?,location
+Post office near BMU?,location
+Police station near BMU?,location
+BMU surrounding area?,location
+Neighborhood of BMU?,location
+Safe area hai kya BMU ke paas?,location
+What engineering programs are offered?,courses
+Which management courses are available?,courses
+Law courses at BMU?,courses
+Commerce programs at BMU?,courses
+Arts programs at BMU?,courses
+Science programs at BMU?,courses
+Undergraduate programs at BMU?,courses
+Postgraduate programs at BMU?,courses
+Doctoral programs at BMU?,courses
+Professional courses at BMU?,courses
+Vocational courses available?,courses
+Short term courses at BMU?,courses
+Certificate courses available?,courses
+Diploma courses at BMU?,courses
+Part time courses available?,courses
+Distance learning at BMU?,courses
+Online courses at BMU?,courses
+Weekend courses available?,courses
+Executive programs at BMU?,courses
+Professional development courses?,courses
+BTech program duration?,courses
+How many years is BTech?,courses
+BTech kitne saal ka hai?,courses
+MBA duration kitni hai?,courses
+LLB kitne saal ka hai?,courses
+5 year integrated course?,courses
+3 year degree program?,courses
+2 year masters program?,courses
+Semester system at BMU?,courses
+Annual system ya semester?,courses
+How many semesters in BTech?,courses
+Semester mein kitne subjects?,courses
+Credit system at BMU?,courses
+Credit hours kya hote hain?,courses
+Elective subjects available?,courses
+Open electives at BMU?,courses
+Minor degree available?,courses
+Major minor system?,courses
+Dual major possible?,courses
+Interdisciplinary courses?,courses
+Cross department courses?,courses
+Humanities in engineering?,courses
+Management in BTech?,courses
+Law in engineering?,courses
+Entrepreneurship course?,courses
+Innovation course at BMU?,courses
+Design thinking course?,courses
+Joy of engineering course?,courses
+Project based learning?,courses
+Capstone project in BTech?,courses
+Final year project details?,courses
+Thesis required?,courses
+Dissertation at BMU?,courses
+Research project mandatory?,courses
+Industry project in curriculum?,courses
+Live project in course?,courses
+Internship in curriculum?,courses
+Mandatory internship?,courses
+Summer training required?,courses
+Industrial training details?,courses
+Is BMU recognized and accredited?,about
+Is BMU UGC recognized?,about
+Is BMU approved by UGC?,about
+UGC recognized hai kya BMU?,about
+Is BMU a recognized university?,about
+BMU accredited hai kya?,about
+Is BMU government approved?,about
+BMU government se approved hai?,about
+Is BMU a legitimate university?,about
+BMU valid degree deta hai kya?,about
+What makes BMU different from other universities?,about
+BMU aur universities se alag kaise hai?,about
+Why should I choose BMU over other colleges?,about
+BMU special kyu hai?,about
+What is unique about BMU?,about
+BMU ki kya khasiyat hai?,about
+What is BMU known for?,about
+BMU kis cheez ke liye famous hai?,about
+Is BMU a good university for engineering?,about
+BMU engineering ke liye kaisa hai?,about
+Hero Group university hai kya BMU?,about
+Is BMU backed by Hero Group?,about
+Hero Group ka connection kya hai BMU se?,about
+BMU industry collaboration kaisi hai?,about
+Does BMU have industry tie-ups?,about
+BMU mein industry exposure milta hai kya?,about
+Is BMU worth it?,about
+BMU worth hai kya fees ke hisaab se?,about
+Is BMU a good investment?,about
+BMU mein paisa lagana sahi hai kya?,about
+Fees zyada hai kya BMU ki?,about
+Is BMU expensive?,about
+BMU costly hai kya?,about
+Is BMU fee justified?,about
+BMU ki fees reasonable hai kya?,about
+How safe is the BMU campus?,about
+BMU campus safe hai kya?,about
+Is BMU campus secure?,about
+Campus mein security kaisi hai?,about
+Is there 24/7 security at BMU?,about
+BMU mein CCTV hai kya?,about
+Are there extracurricular activities at BMU?,about
+BMU mein extracurricular activities hain kya?,about
+Clubs and societies at BMU?,about
+BMU mein kaunse clubs hain?,about
+Cultural events at BMU?,about
+BMU mein fest hota hai kya?,about
+Sports activities at BMU?,about
+BMU mein sports hain kya?,about
+Student life at BMU kaisi hai?,about
+Are there interdisciplinary programs at BMU?,courses
+BMU mein interdisciplinary courses hain kya?,courses
+Can I take electives from other departments?,courses
+Cross department subjects le sakte hain kya?,courses
+Does BMU offer flexible curriculum?,courses
+BMU mein flexible course structure hai kya?,courses
+Does BMU offer B.Tech in Computer Science?,courses
+BMU mein computer science hai kya?,courses
+Is CSE available at BMU?,courses
+BMU mein CSE program hai?,courses
+Does BMU have AI specialization?,courses
+AI specialization available hai kya BMU mein?,courses
+Cybersecurity course hai kya BMU mein?,courses
+Does BMU offer Data Science?,courses
+Data Science specialization at BMU?,courses
+What specializations are there in BTech?,courses
+BTech mein kya kya specializations hain?,courses
+Does BMU have international programs?,courses
+BMU mein international exchange program hai?,courses
+Are there global exposure opportunities at BMU?,courses
+BMU mein foreign university collaboration hai kya?,courses
+Does BMU offer exchange programs?,courses
+International opportunities at BMU?,courses
+When do admissions start at BMU?,admission
+BMU mein admissions kab shuru hote hain?,admission
+Admission season kab hai?,admission
+BMU admission 2026 kab se hai?,admission
+When is the last date for BMU admission?,admission
+Admission ki deadline kab hai?,admission
+Multiple rounds of admission at BMU?,admission
+BMU mein kitne admission rounds hote hain?,admission
+Is there an entrance exam by BMU?,admission
+BMU apna entrance exam leta hai kya?,admission
+BMU SAT kya hota hai?,admission
+Does BMU conduct its own test?,admission
+What is the admission process for BTech?,admission
+BTech admission process kya hai BMU mein?,admission
+JEE se admission hota hai kya BMU mein?,admission
+Is JEE score required for BMU?,admission
+Can I get admission without JEE in BMU?,admission
+BMU mein bina JEE ke admission ho sakta hai?,admission
+Is there an interview for BMU admission?,admission
+BMU mein interview hota hai kya?,admission
+Does BMU have management quota?,admission
+Management quota available hai kya?,admission
+Is hostel compulsory at BMU?,hostel
+Hostel compulsory hai kya BMU mein?,hostel
+Is it mandatory to stay in hostel?,hostel
+Hostel lena zaroori hai kya?,hostel
+Can I live off campus at BMU?,hostel
+Off campus rehna allowed hai kya?,hostel
+What facilities are available in BMU hostel?,hostel
+BMU hostel mein kya kya facilities hain?,hostel
+Hostel mein WiFi hai kya?,hostel
+Is WiFi available in hostel?,hostel
+Hostel mein laundry service hai kya?,hostel
+Is there laundry in hostel?,hostel
+Common room in hostel?,hostel
+Hostel mein common room hai kya?,hostel
+Hostel safe hai kya?,hostel
+Is BMU hostel safe?,hostel
+Hostel mein security kaisi hai?,hostel
+Girls hostel safe hai kya BMU mein?,hostel
+Is girls hostel secure at BMU?,hostel
+CCTV in hostel?,hostel
+Hostel mein CCTV hai kya?,hostel
+Can parents visit hostel?,hostel
+Parents hostel visit kar sakte hain kya?,hostel
+Hostel visiting hours kya hain?,hostel
+Does BMU provide internships?,placement
+BMU mein internship milti hai kya?,placement
+Internship program hai kya BMU mein?,placement
+Is internship part of curriculum at BMU?,placement
+BMU mein mandatory internship hai kya?,placement
+Industry internship at BMU?,placement
+BMU se internship kaise milti hai?,placement
+Paid internship milti hai kya BMU mein?,placement
+Does BMU have industry collaboration for placements?,placement
+BMU industry ke saath kaam karta hai kya?,placement
+Hero Group placement at BMU?,placement
+Hero Group mein placement hoti hai kya?,placement
+What is the attendance requirement at BMU?,about
+BMU mein attendance kitni chahiye?,about
+Minimum attendance at BMU?,about
+BMU attendance rule kya hai?,about
+75 percent attendance chahiye kya?,about
+Can parents visit BMU campus?,about
+Parents campus visit kar sakte hain kya?,about
+Campus tour for parents?,about
+Open day at BMU?,about
+BMU ka placement kaisa hai?,placement
+BMU placement achha hai kya?,placement
+BMU se job milti hai kya?,placement
+BMU placement record kaisa hai?,placement
+Kitni companies aati hain BMU mein?,placement

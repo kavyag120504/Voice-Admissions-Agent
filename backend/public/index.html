@@ -1,0 +1,758 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BMU Admissions Call</title>
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background: #0a0a0f;
+        color: #fff;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      /* ── Background gradient ── */
+      body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background: radial-gradient(ellipse at 30% 20%, #1a1a3e 0%, transparent 60%),
+                    radial-gradient(ellipse at 70% 80%, #0d2a1a 0%, transparent 60%);
+        z-index: 0;
+      }
+
+      .call-container {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 420px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+      }
+
+      /* ── Call header ── */
+      .call-header {
+        text-align: center;
+        margin-bottom: 8px;
+      }
+      .call-header .university-name {
+        font-size: 13px;
+        color: #64748b;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+      }
+      .call-header .call-type {
+        font-size: 12px;
+        color: #22c55e;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+      }
+      .call-header .call-type::before {
+        content: '';
+        width: 6px; height: 6px;
+        background: #22c55e;
+        border-radius: 50%;
+        animation: pulse-dot 1.5s infinite;
+      }
+      @keyframes pulse-dot {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.5; transform: scale(0.8); }
+      }
+
+      /* ── Avatars section ── */
+      .avatars-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+        margin: 20px 0;
+        width: 100%;
+      }
+
+      .person {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .avatar-wrap {
+        position: relative;
+        width: 90px;
+        height: 90px;
+      }
+
+      .avatar {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 36px;
+        position: relative;
+        z-index: 2;
+        border: 3px solid transparent;
+        transition: border-color 0.3s;
+      }
+
+      .avatar.aria {
+        background: linear-gradient(135deg, #1e3a5f, #0f2744);
+        border-color: #334155;
+      }
+
+      .avatar.user {
+        background: linear-gradient(135deg, #1a3a1a, #0f2a0f);
+        border-color: #334155;
+      }
+
+      /* Speaking ring animation */
+      .speaking-ring {
+        position: absolute;
+        inset: -6px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+
+      .avatar-wrap.speaking .speaking-ring {
+        opacity: 1;
+        border-color: #22c55e;
+        animation: speaking-pulse 1s ease-in-out infinite;
+      }
+
+      .avatar-wrap.thinking .speaking-ring {
+        opacity: 1;
+        border-color: #f59e0b;
+        animation: thinking-pulse 1.5s ease-in-out infinite;
+      }
+
+      @keyframes speaking-pulse {
+        0%, 100% { transform: scale(1); opacity: 0.8; }
+        50% { transform: scale(1.08); opacity: 1; }
+      }
+
+      @keyframes thinking-pulse {
+        0%, 100% { transform: scale(1); opacity: 0.4; }
+        50% { transform: scale(1.05); opacity: 0.8; }
+      }
+
+      /* Sound waves */
+      .sound-waves {
+        position: absolute;
+        inset: -14px;
+        border-radius: 50%;
+        border: 2px solid #22c55e;
+        opacity: 0;
+        transform: scale(1);
+      }
+
+      .avatar-wrap.speaking .sound-waves {
+        animation: wave-out 1.2s ease-out infinite;
+      }
+
+      @keyframes wave-out {
+        0% { transform: scale(1); opacity: 0.6; }
+        100% { transform: scale(1.4); opacity: 0; }
+      }
+
+      .person-name {
+        font-size: 14px;
+        font-weight: 600;
+        color: #e2e8f0;
+      }
+
+      .person-role {
+        font-size: 11px;
+        color: #64748b;
+        text-align: center;
+      }
+
+      .person-status {
+        font-size: 11px;
+        height: 16px;
+        color: #94a3b8;
+        text-align: center;
+      }
+
+      .person-status.speaking { color: #22c55e; }
+      .person-status.thinking { color: #f59e0b; }
+      .person-status.listening { color: #60a5fa; }
+
+      /* ── Call divider ── */
+      .call-divider {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .call-line {
+        width: 2px;
+        height: 30px;
+        background: linear-gradient(to bottom, transparent, #334155, transparent);
+      }
+
+      .call-icon {
+        font-size: 20px;
+        color: #22c55e;
+      }
+
+      /* ── Timer ── */
+      .call-timer {
+        font-size: 28px;
+        font-weight: 300;
+        color: #e2e8f0;
+        letter-spacing: 3px;
+        font-variant-numeric: tabular-nums;
+        margin: 4px 0 16px;
+      }
+
+      /* ── Transcript ── */
+      .transcript-box {
+        width: 100%;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid #1e293b;
+        border-radius: 16px;
+        padding: 14px 16px;
+        min-height: 120px;
+        max-height: 200px;
+        overflow-y: auto;
+        margin-bottom: 16px;
+        scrollbar-width: thin;
+        scrollbar-color: #334155 transparent;
+      }
+
+      .transcript-box::-webkit-scrollbar { width: 4px; }
+      .transcript-box::-webkit-scrollbar-track { background: transparent; }
+      .transcript-box::-webkit-scrollbar-thumb { background: #334155; border-radius: 2px; }
+
+      .transcript-msg {
+        margin-bottom: 10px;
+        animation: msg-in 0.3s ease;
+      }
+
+      @keyframes msg-in {
+        from { opacity: 0; transform: translateY(6px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .transcript-msg .msg-sender {
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        margin-bottom: 3px;
+      }
+
+      .transcript-msg.aria-msg .msg-sender { color: #60a5fa; }
+      .transcript-msg.user-msg .msg-sender { color: #4ade80; }
+      .transcript-msg.system-msg .msg-sender { color: #94a3b8; }
+
+      .transcript-msg .msg-text {
+        font-size: 13px;
+        line-height: 1.5;
+        color: #cbd5e1;
+      }
+
+      .transcript-msg.aria-msg .msg-text { color: #e2e8f0; }
+
+      /* ── Text input ── */
+      .text-input-row {
+        display: flex;
+        gap: 8px;
+        width: 100%;
+        margin-bottom: 16px;
+      }
+
+      .text-input-row input {
+        flex: 1;
+        background: rgba(255,255,255,0.06);
+        border: 1px solid #1e293b;
+        border-radius: 24px;
+        padding: 10px 16px;
+        color: #e2e8f0;
+        font-size: 13px;
+        outline: none;
+        transition: border-color 0.2s;
+      }
+
+      .text-input-row input:focus { border-color: #3b82f6; }
+      .text-input-row input::placeholder { color: #475569; }
+
+      .text-input-row button {
+        background: #3b82f6;
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s;
+        flex-shrink: 0;
+      }
+
+      .text-input-row button:hover { background: #2563eb; }
+      .text-input-row button:disabled { background: #1e293b; cursor: not-allowed; }
+
+      /* ── Call controls ── */
+      .call-controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        width: 100%;
+      }
+
+      .ctrl-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        cursor: pointer;
+        border: none;
+        background: none;
+        color: #94a3b8;
+        font-size: 11px;
+        transition: color 0.2s;
+      }
+
+      .ctrl-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+      .ctrl-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        transition: all 0.2s;
+      }
+
+      /* Start call button */
+      .ctrl-btn.start-btn .ctrl-icon {
+        background: #22c55e;
+        color: white;
+        box-shadow: 0 0 20px rgba(34,197,94,0.4);
+      }
+      .ctrl-btn.start-btn:hover .ctrl-icon { background: #16a34a; }
+
+      /* End call button */
+      .ctrl-btn.end-btn .ctrl-icon {
+        background: #ef4444;
+        color: white;
+        box-shadow: 0 0 20px rgba(239,68,68,0.4);
+      }
+      .ctrl-btn.end-btn:hover .ctrl-icon { background: #dc2626; }
+
+      /* Interrupt button */
+      .ctrl-btn.interrupt-btn .ctrl-icon {
+        background: rgba(255,255,255,0.08);
+        color: #94a3b8;
+        border: 1px solid #1e293b;
+      }
+      .ctrl-btn.interrupt-btn:not(:disabled):hover .ctrl-icon {
+        background: rgba(245,158,11,0.15);
+        color: #f59e0b;
+        border-color: #f59e0b;
+      }
+
+      /* Done speaking button */
+      .ctrl-btn.done-btn .ctrl-icon {
+        background: rgba(255,255,255,0.08);
+        color: #94a3b8;
+        border: 1px solid #1e293b;
+      }
+      .ctrl-btn.done-btn:not(:disabled):hover .ctrl-icon {
+        background: rgba(34,197,94,0.15);
+        color: #22c55e;
+        border-color: #22c55e;
+      }
+      .ctrl-btn.done-btn.active .ctrl-icon {
+        background: rgba(34,197,94,0.2);
+        color: #22c55e;
+        border-color: #22c55e;
+        animation: done-pulse 0.8s ease-in-out infinite;
+      }
+      @keyframes done-pulse {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
+        50% { box-shadow: 0 0 0 8px rgba(34,197,94,0); }
+      }
+
+      /* Language selector */
+      .lang-select {
+        background: rgba(255,255,255,0.06);
+        border: 1px solid #1e293b;
+        border-radius: 20px;
+        padding: 6px 12px;
+        color: #94a3b8;
+        font-size: 12px;
+        cursor: pointer;
+        outline: none;
+      }
+
+      /* ── Idle screen ── */
+      .idle-screen {
+        text-align: center;
+        padding: 10px 0;
+      }
+      .idle-screen p {
+        font-size: 13px;
+        color: #475569;
+        margin-top: 8px;
+      }
+
+      /* ── Typing indicator ── */
+      .typing-dots {
+        display: inline-flex;
+        gap: 4px;
+        align-items: center;
+        padding: 4px 0;
+      }
+      .typing-dots span {
+        width: 5px; height: 5px;
+        background: #60a5fa;
+        border-radius: 50%;
+        animation: dot-bounce 1.2s infinite;
+      }
+      .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+      .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+      @keyframes dot-bounce {
+        0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
+        40% { transform: translateY(-5px); opacity: 1; }
+      }
+
+      /* hidden log for compatibility */
+      #log { display: none; }
+    </style>
+  </head>
+  <body>
+    <div class="call-container">
+
+      <!-- Header -->
+      <div class="call-header">
+        <div class="university-name">BML Munjal University</div>
+        <div class="call-type" id="callTypeLabel">Admissions Helpline</div>
+      </div>
+
+      <!-- Avatars -->
+      <div class="avatars-section">
+        <!-- Aria -->
+        <div class="person">
+          <div class="avatar-wrap" id="ariaWrap">
+            <div class="sound-waves"></div>
+            <div class="speaking-ring"></div>
+            <div class="avatar aria">👩‍💼</div>
+          </div>
+          <div class="person-name">Aria</div>
+          <div class="person-role">Admissions Counselor</div>
+          <div class="person-status" id="ariaStatus">Waiting...</div>
+        </div>
+
+        <!-- Divider -->
+        <div class="call-divider">
+          <div class="call-line"></div>
+          <div class="call-icon" id="callIcon">📞</div>
+          <div class="call-line"></div>
+        </div>
+
+        <!-- User -->
+        <div class="person">
+          <div class="avatar-wrap" id="userWrap">
+            <div class="sound-waves"></div>
+            <div class="speaking-ring"></div>
+            <div class="avatar user">🧑‍🎓</div>
+          </div>
+          <div class="person-name">You</div>
+          <div class="person-role">Student / Parent</div>
+          <div class="person-status" id="userStatus">—</div>
+        </div>
+      </div>
+
+      <!-- Timer -->
+      <div class="call-timer" id="callTimer">00:00</div>
+
+      <!-- Transcript toggle button -->
+      <button id="transcriptToggleBtn" style="
+        background: rgba(255,255,255,0.06);
+        border: 1px solid #1e293b;
+        border-radius: 20px;
+        color: #94a3b8;
+        font-size: 12px;
+        padding: 6px 14px;
+        cursor: pointer;
+        width: 100%;
+        margin-bottom: 8px;
+        transition: all 0.2s;
+      " onclick="toggleTranscript()">📋 Show Conversation</button>
+
+      <!-- Transcript (hidden by default) -->
+      <div class="transcript-box" id="transcriptBox" style="display:none;">
+        <div class="transcript-msg system-msg">
+          <div class="msg-sender">System</div>
+          <div class="msg-text">Press the green button to start your call with Aria.</div>
+        </div>
+      </div>
+
+      <!-- Text input -->
+      <div class="text-input-row">
+        <input id="manualInput" placeholder="Type a message..." disabled />
+        <button id="sendBtn" disabled title="Send">➤</button>
+      </div>
+
+      <!-- Controls -->
+      <div class="call-controls">
+        <!-- Language -->
+        <select id="languageMode" class="lang-select">
+          <option value="auto">🌐 Auto</option>
+          <option value="hi-IN">🇮🇳 Hindi</option>
+          <option value="en-IN">🇬🇧 English</option>
+        </select>
+
+        <!-- Interrupt -->
+        <button class="ctrl-btn interrupt-btn" id="interruptBtn" disabled>
+          <div class="ctrl-icon">⏸</div>
+          <span>Interrupt</span>
+        </button>
+
+        <!-- Done Speaking -->
+        <button class="ctrl-btn done-btn" id="doneBtn" disabled>
+          <div class="ctrl-icon">✅</div>
+          <span>Done</span>
+        </button>
+
+        <!-- Start / End call -->
+        <button class="ctrl-btn start-btn" id="startBtn">
+          <div class="ctrl-icon">📞</div>
+          <span>Call</span>
+        </button>
+        <button class="ctrl-btn end-btn" id="stopBtn" disabled style="display:none">
+          <div class="ctrl-icon">📵</div>
+          <span>End</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Hidden log div for app.js compatibility -->
+    <div id="log" style="display:none"></div>
+    <!-- Hidden status div for app.js compatibility -->
+    <div id="status" style="display:none"></div>
+
+    <script type="module" src="/app.js"></script>
+    <script>
+      // ── Call UI Controller ──────────────────────────────────────────────────
+      let callSeconds = 0;
+      let timerInterval = null;
+      let callActive = false;
+
+      const timerEl = document.getElementById("callTimer");
+      const ariaWrap = document.getElementById("ariaWrap");
+      const userWrap = document.getElementById("userWrap");
+      const ariaStatus = document.getElementById("ariaStatus");
+      const userStatus = document.getElementById("userStatus");
+      const callIcon = document.getElementById("callIcon");
+      const callTypeLabel = document.getElementById("callTypeLabel");
+      const transcriptBox = document.getElementById("transcriptBox");
+      const startBtn = document.getElementById("startBtn");
+      const stopBtn = document.getElementById("stopBtn");
+
+      function formatTime(s) {
+        const m = Math.floor(s / 60).toString().padStart(2, "0");
+        const sec = (s % 60).toString().padStart(2, "0");
+        return `${m}:${sec}`;
+      }
+
+      function startTimer() {
+        callSeconds = 0;
+        timerInterval = setInterval(() => {
+          callSeconds++;
+          timerEl.textContent = formatTime(callSeconds);
+        }, 1000);
+      }
+
+      function stopTimer() {
+        clearInterval(timerInterval);
+        timerEl.textContent = "00:00";
+      }
+
+      // Override setStatus to update call UI
+      const origSetStatus = window.setStatus;
+      function updateCallUI(statusText) {
+        const s = statusText.toLowerCase();
+
+        if (s.includes("idle") || s.includes("disconnected")) {
+          ariaWrap.className = "avatar-wrap";
+          userWrap.className = "avatar-wrap";
+          ariaStatus.textContent = "Offline";
+          ariaStatus.className = "person-status";
+          userStatus.textContent = "—";
+          userStatus.className = "person-status";
+          callIcon.textContent = "📞";
+          callTypeLabel.textContent = "Admissions Helpline";
+          callTypeLabel.style.color = "#64748b";
+          callTypeLabel.style.animation = "none";
+        } else if (s.includes("listening")) {
+          ariaWrap.className = "avatar-wrap";
+          userWrap.className = "avatar-wrap speaking";
+          ariaStatus.textContent = "Listening...";
+          ariaStatus.className = "person-status listening";
+          userStatus.textContent = "Speaking";
+          userStatus.className = "person-status speaking";
+          callIcon.textContent = "🎙";
+        } else if (s.includes("thinking") || s.includes("starting")) {
+          ariaWrap.className = "avatar-wrap thinking";
+          userWrap.className = "avatar-wrap";
+          ariaStatus.textContent = "Thinking...";
+          ariaStatus.className = "person-status thinking";
+          userStatus.textContent = "Waiting";
+          userStatus.className = "person-status";
+          callIcon.textContent = "💭";
+          // Show typing indicator in transcript
+          showTypingIndicator();
+        } else if (s.includes("speaking")) {
+          ariaWrap.className = "avatar-wrap speaking";
+          userWrap.className = "avatar-wrap";
+          ariaStatus.textContent = "Speaking";
+          ariaStatus.className = "person-status speaking";
+          userStatus.textContent = "Listening";
+          userStatus.className = "person-status listening";
+          callIcon.textContent = "🔊";
+          removeTypingIndicator();
+        }
+      }
+
+      // Intercept status updates from app.js
+      const statusEl = document.getElementById("status");
+      const observer = new MutationObserver(() => {
+        updateCallUI(statusEl.textContent || "");
+      });
+      observer.observe(statusEl, { childList: true, subtree: true, characterData: true });
+
+      // Intercept log updates from app.js to show in transcript
+      const logEl = document.getElementById("log");
+      const logObserver = new MutationObserver(() => {
+        const lines = (logEl.textContent || "").split("\n").filter(Boolean);
+        const lastLine = lines[lines.length - 1];
+        if (lastLine) addTranscriptLine(lastLine);
+      });
+      logObserver.observe(logEl, { childList: true, subtree: true, characterData: true });
+
+      let lastLogContent = "";
+      setInterval(() => {
+        const current = logEl.textContent || "";
+        if (current !== lastLogContent) {
+          const newLines = current.slice(lastLogContent.length).split("\n").filter(Boolean);
+          newLines.forEach(line => addTranscriptLine(line));
+          lastLogContent = current;
+        }
+      }, 100);
+
+      function addTranscriptLine(line) {
+        if (!line.trim()) return;
+        removeTypingIndicator();
+
+        const div = document.createElement("div");
+
+        if (line.startsWith("You:") || line.startsWith("You(text):")) {
+          div.className = "transcript-msg user-msg";
+          div.innerHTML = `<div class="msg-sender">You</div><div class="msg-text">${line.replace(/^You(\(text\))?:\s*/, "")}</div>`;
+        } else if (line.startsWith("Assistant[")) {
+          div.className = "transcript-msg aria-msg";
+          const text = line.replace(/^Assistant\[.*?\]:\s*/, "").trim();
+          if (text) div.innerHTML = `<div class="msg-sender">Aria</div><div class="msg-text">${text}</div>`;
+          else return;
+        } else if (line.startsWith("System:") || line.startsWith("Call stopped")) {
+          div.className = "transcript-msg system-msg";
+          div.innerHTML = `<div class="msg-sender">System</div><div class="msg-text">${line.replace(/^System:\s*/, "")}</div>`;
+        } else if (line.startsWith("  [Source]") || line.startsWith("  [Retrieved]") || line.startsWith("Speech error")) {
+          return; // skip source lines and errors from transcript
+        } else {
+          return;
+        }
+
+        transcriptBox.appendChild(div);
+        transcriptBox.scrollTop = transcriptBox.scrollHeight;
+      }
+
+      let typingEl = null;
+      function showTypingIndicator() {
+        if (typingEl) return;
+        typingEl = document.createElement("div");
+        typingEl.className = "transcript-msg aria-msg";
+        typingEl.id = "typingIndicator";
+        typingEl.innerHTML = `<div class="msg-sender">Aria</div><div class="msg-text"><div class="typing-dots"><span></span><span></span><span></span></div></div>`;
+        transcriptBox.appendChild(typingEl);
+        transcriptBox.scrollTop = transcriptBox.scrollHeight;
+      }
+
+      function removeTypingIndicator() {
+        if (typingEl) { typingEl.remove(); typingEl = null; }
+      }
+
+      // Override start/stop button visuals
+      startBtn.addEventListener("click", () => {
+        startBtn.style.display = "none";
+        stopBtn.style.display = "flex";
+        callActive = true;
+        startTimer();
+        callTypeLabel.textContent = "Connected";
+        callTypeLabel.style.color = "#22c55e";
+        document.getElementById("manualInput").disabled = false;
+        document.getElementById("doneBtn").disabled = false;
+        transcriptBox.innerHTML = "";
+        addTranscriptLine("System: Call connected. Aria is ready to help.");
+      });
+
+      stopBtn.addEventListener("click", () => {
+        stopBtn.style.display = "none";
+        startBtn.style.display = "flex";
+        callActive = false;
+        stopTimer();
+        updateCallUI("idle");
+        document.getElementById("manualInput").disabled = true;
+        document.getElementById("doneBtn").disabled = true;
+        addTranscriptLine("System: Call ended.");
+      });
+
+      // Done Speaking button — tells app.js to send whatever was captured
+      const doneBtn = document.getElementById("doneBtn");
+      doneBtn.addEventListener("click", () => {
+        // Dispatch a custom event that app.js listens to
+        window.dispatchEvent(new CustomEvent("user-done-speaking"));
+        doneBtn.classList.add("active");
+        setTimeout(() => doneBtn.classList.remove("active"), 600);
+      });
+
+      // Transcript toggle
+      let transcriptVisible = false;
+      function toggleTranscript() {
+        transcriptVisible = !transcriptVisible;
+        const box = document.getElementById("transcriptBox");
+        const btn = document.getElementById("transcriptToggleBtn");
+        box.style.display = transcriptVisible ? "block" : "none";
+        btn.textContent = transcriptVisible ? "📋 Hide Conversation" : "📋 Show Conversation";
+        if (transcriptVisible) box.scrollTop = box.scrollHeight;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+# ── Environment variables (NEVER commit these) ──────────────────────────────
+backend/.env
+backend/.env.local
+.env
+.env.local
+.env.production
+
+# ── Node.js ──────────────────────────────────────────────────────────────────
+backend/node_modules/
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ── Python ───────────────────────────────────────────────────────────────────
+nlp_service/__pycache__/
+nlp_service/*.pyc
+nlp_service/*.pyo
+nlp_service/.venv/
+nlp_service/venv/
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# ── Session data (runtime, not source) ───────────────────────────────────────
+backend/data/session_store.json
+
+# ── Piper TTS (large binary files, not source code) ──────────────────────────
+*.onnx
+*.onnx.json
+piper/
+piper_windows_amd64/
+
+# ── ML model files (too large for GitHub) ────────────────────────────────────
+*.pkl
+*.pickle
+*.pt
+*.pth
+*.bin
+*.safetensors
+models/
+saved_models/
+
+# ── OS files ──────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── IDE ───────────────────────────────────────────────────────────────────────
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# ── Logs ──────────────────────────────────────────────────────────────────────
+*.log
+logs/
+
+# ── Docker ────────────────────────────────────────────────────────────────────
+# (keep Dockerfile but ignore build artifacts)
+.dockerignore
+
+# ── Temporary files ───────────────────────────────────────────────────────────
+*.tmp
+*.temp
+test_*.mjs
+count_dataset.mjs
+fix_csv.mjs
