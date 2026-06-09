@@ -556,3 +556,39 @@ export function scoreTopicWithIntent(topicKeywords, topicId, queryResult, detect
   }
   return score;
 }
+
+// ─── HYBRID INTENT DETECTION (ML + Regex Fallback) ───────────────────────────
+//
+// This function is the NEW entry point for intent detection.
+// It tries the ML model first (via Python service).
+// If ML is unavailable or returns low confidence, it falls back
+// to the original regex-based detectIntent() — keeping the system stable.
+//
+// The original detectIntent() function above is UNTOUCHED and still works
+// independently as a reliable fallback.
+
+export async function detectIntentHybrid(text) {
+  try {
+    // Lazy import to avoid circular deps — only loaded when called
+    const { predictIntentML } = await import("./pythonNlpService.js");
+    const mlResult = await predictIntentML(text);
+
+    if (mlResult && mlResult.intent && mlResult.confidence >= 0.45) {
+      // ML model is confident — use its prediction
+      // Map single ML intent to array format expected by the rest of the pipeline
+      const mlIntent = mlResult.intent;
+      const regexIntents = detectIntent(text);
+
+      // Merge: ML primary + any extra regex intents (multi-intent support)
+      const merged = [mlIntent, ...regexIntents.filter(i => i !== mlIntent && i !== "general")];
+      console.log(`[HybridIntent] ML="${mlIntent}"(${mlResult.confidence}) | Regex=[${regexIntents}] | Final=[${merged}]`);
+      return merged;
+    }
+  } catch (err) {
+    // Python service offline or error — silently fallback
+    console.log(`[HybridIntent] ML unavailable (${err.message}) — using regex fallback`);
+  }
+
+  // Fallback: use original regex-based detection
+  return detectIntent(text);
+}

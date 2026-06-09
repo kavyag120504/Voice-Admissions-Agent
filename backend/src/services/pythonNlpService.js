@@ -86,10 +86,40 @@ export async function analyzeQuery(query) {
   }
 }
 
+/**
+ * ML Intent Classification using trained TF-IDF + Logistic Regression model.
+ * Returns: { intent, confidence, all_scores } or null if unavailable.
+ * Confidence threshold: only trust predictions above 0.45 to avoid false positives.
+ */
+export async function predictIntentML(query) {
+  if (serviceAvailable === false) return null;
+  try {
+    const res = await fetch(`${NLP_SERVICE_URL}/predict-intent`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ query }),
+      signal: AbortSignal.timeout(2000)
+    });
+    if (!res.ok) return null;
+    const data = await res.json();
+    if (data.error) return null;
+    // Only return result if model is confident enough
+    if (data.confidence < 0.45) {
+      console.log(`[ML Intent] Low confidence (${data.confidence}) for "${query}" — deferring to regex`);
+      return null;
+    }
+    console.log(`[ML Intent] "${query}" → ${data.intent} (confidence: ${data.confidence})`);
+    return data;
+  } catch {
+    return null;
+  }
+}
+
 export const pythonNlpService = {
   isAvailable: () => serviceAvailable !== false,
   semanticSearch,
   extractEntitiesNLP,
   analyzeQuery,
+  predictIntentML,
   checkAvailability
 };

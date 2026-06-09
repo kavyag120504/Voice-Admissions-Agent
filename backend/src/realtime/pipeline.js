@@ -11,6 +11,7 @@ import { extractEntities, buildEntityContext } from "../services/entityExtractio
 import { findSimilarTopic } from "../services/semanticSimilarityService.js";
 import { detectHallucination } from "../services/hallucinationDetector.js";
 import { pythonNlpService } from "../services/pythonNlpService.js";
+import { detectIntentHybrid } from "../services/nlpService.js";
 import { config } from "../config.js";
 
 function send(ws, payload) {
@@ -365,7 +366,15 @@ export async function handleRealtimeMessage(ws, incoming) {
     return;
   }
 
-  // Step 9: TF-IDF retrieval
+  // Step 9: ML Hybrid Intent Detection (non-blocking — runs alongside TF-IDF)
+  // Uses trained TF-IDF+LogReg model first, falls back to regex if unavailable.
+  detectIntentHybrid(contextResolvedText).then(intents => {
+    if (intents && intents.length > 0) {
+      sessionManager.setDialogState(sessionId, { mlDetectedIntents: intents });
+    }
+  }).catch(() => {});
+
+  // Step 9b: TF-IDF retrieval
   const retrieved = tfidfRetrieve(contextResolvedText);
 
   // Step 9b: Sentence-BERT semantic search (Python) — enhances retrieval

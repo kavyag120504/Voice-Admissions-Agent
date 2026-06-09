@@ -43,6 +43,12 @@ piper_windows_amd64/
 models/
 saved_models/
 
+# ── Generated ML evaluation outputs (run train_intent_model.py to regenerate) ─
+nlp_service/intent_model.pkl
+nlp_service/evaluation_report.txt
+nlp_service/confusion_matrix.png
+nlp_service/failure_cases.csv
+
 # ── OS files ──────────────────────────────────────────────────────────────────
 .DS_Store
 Thumbs.db

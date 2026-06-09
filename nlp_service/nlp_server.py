@@ -5,7 +5,7 @@ Provides advanced NLP capabilities to the Node.js backend:
 1. Semantic Search (Sentence-BERT + FAISS)
 2. Named Entity Recognition (spaCy)
 3. Word2Vec embeddings for query expansion
-4. Intent classification (trained SVM/DistilBERT)
+4. Intent classification (trained TF-IDF + Logistic Regression)
 
 Runs on port 5001
 """
@@ -18,6 +18,7 @@ except ImportError:
     HAS_CORS = False
 import json
 import os
+import pickle
 import numpy as np
 import logging
 
@@ -29,10 +30,11 @@ if HAS_CORS:
     CORS(app)
 
 # ── Paths ─────────────────────────────────────────────────────────────────────
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_DIR = os.path.join(BASE_DIR, "..", "backend", "data")
-FACTS_PATH = os.path.join(DATA_DIR, "bmu_facts.json")
-DOCS_DIR = os.path.join(DATA_DIR, "..", "..", "..", "data", "documents")
+BASE_DIR    = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR    = os.path.join(BASE_DIR, "..", "backend", "data")
+FACTS_PATH  = os.path.join(DATA_DIR, "bmu_facts.json")
+MODEL_PATH  = os.path.join(BASE_DIR, "intent_model.pkl")
+DOCS_DIR    = os.path.join(DATA_DIR, "..", "..", "..", "data", "documents")
 
 # ── Load BMU knowledge base ───────────────────────────────────────────────────
 def load_knowledge_base():
@@ -161,11 +163,30 @@ def init_word2vec():
         logger.error(f"Word2Vec init failed: {e}")
         word2vec_model = None
 
+# ── ML Intent Classifier (TF-IDF + Logistic Regression) ─────────────────────
+ml_intent_model = None
+ml_intent_classes = []
+
+def init_intent_classifier():
+    global ml_intent_model, ml_intent_classes
+    if not os.path.exists(MODEL_PATH):
+        logger.warning(f"Intent model not found at {MODEL_PATH}. Run train_intent_model.py first.")
+        return
+    try:
+        with open(MODEL_PATH, "rb") as f:
+            ml_intent_model = pickle.load(f)
+        ml_intent_classes = list(ml_intent_model.classes_)
+        logger.info(f"ML Intent Classifier loaded — {len(ml_intent_classes)} intents: {ml_intent_classes}")
+    except Exception as e:
+        logger.error(f"Failed to load intent model: {e}")
+        ml_intent_model = None
+
 # ── Initialize all models ─────────────────────────────────────────────────────
 logger.info("Initializing NLP models...")
 init_semantic_search()
 init_spacy()
 init_word2vec()
+init_intent_classifier()
 logger.info("All models initialized")
 
 # ── API Endpoints ─────────────────────────────────────────────────────────────
@@ -177,8 +198,56 @@ def health():
         "semantic_search": semantic_model is not None,
         "spacy_ner": nlp_spacy is not None,
         "word2vec": word2vec_model is not None,
+        "ml_intent_classifier": ml_intent_model is not None,
+        "ml_intent_classes": ml_intent_classes,
         "kb_docs": len(KB_DOCS)
     })
+
+
+@app.route("/predict-intent", methods=["POST"])
+def predict_intent():
+    """
+    ML Intent Classification using TF-IDF + Logistic Regression.
+    Returns the predicted intent and a confidence score for every class.
+    Falls back gracefully if the model is not loaded.
+    """
+    if ml_intent_model is None:
+        return jsonify({
+            "error": "ml_intent_model_not_available",
+            "hint": "Run: python train_intent_model.py"
+        }), 503
+
+    data = request.get_json()
+    query = str(data.get("query", "")).strip()
+
+    if not query:
+        return jsonify({"error": "empty_query"}), 400
+
+    try:
+        import numpy as np
+        proba = ml_intent_model.predict_proba([query])[0]
+        predicted_intent = ml_intent_classes[int(np.argmax(proba))]
+        confidence = float(np.max(proba))
+
+        # Build per-class probability breakdown
+        all_scores = [
+            {"intent": cls, "confidence": round(float(p), 4)}
+            for cls, p in sorted(
+                zip(ml_intent_classes, proba),
+                key=lambda x: x[1], reverse=True
+            )
+        ]
+
+        return jsonify({
+            "query"           : query,
+            "intent"          : predicted_intent,
+            "confidence"      : round(confidence, 4),
+            "all_scores"      : all_scores,
+            "model"           : "tfidf_logreg_v1"
+        })
+    except Exception as e:
+        logger.error(f"Intent prediction error: {e}")
+        return jsonify({"error": str(e)}), 500
 
 @app.route("/semantic-search", methods=["POST"])
 def semantic_search():
