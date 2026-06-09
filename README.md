@@ -1,7 +1,7 @@
-# BMU Advanced Call Agent — Complete Documentation
+# BMU Voice Admissions Agent — Complete Documentation
 
 > A real-time, voice-based AI admissions counselor for BML Munjal University (BMU).
-> Built as an NLP project using Node.js, Python, Ollama (local LLM), Piper TTS, and a custom multi-layer NLP pipeline with ML-based intent classification.
+> Built as an NLP project using Node.js, Python, Ollama (local LLM), Piper TTS, and a custom multi-layer NLP pipeline with a **trained ML intent classifier (TF-IDF + Logistic Regression, 83% accuracy, macro F1 0.84)**.
 
 ---
 
@@ -40,18 +40,17 @@ The system implements a complete custom NLP pipeline:
 - Tokenization and stopword removal (English + Hinglish)
 - Porter stemming
 - OOV resolution (4-layer: direct map → stem → SoundEx phonetic → Levenshtein fuzzy)
-- **ML-based intent classification** (Logistic Regression, SVM, DistilBERT — 93.60% accuracy)
+- **ML-based intent classification** — custom trained TF-IDF + Logistic Regression classifier (83.08% accuracy, macro F1 0.84) with hybrid fallback to regex
 - Named entity extraction (spaCy + custom rules)
 - TF-IDF document retrieval
 - Sentence-BERT semantic search + FAISS (Python microservice)
 - Word2Vec embeddings for query expansion
-- Context-aware dialogue managementiThree models were trained and tested on 856 labeled queries containing 8  classes of intent with an 80 train and 20 test split.
-
+- Context-aware dialogue management
 - Hallucination detection
 - Emotion-adaptive TTS
 
 **Topic routing accuracy: 100% on 85 test cases**
-**Intent classification accuracy: 93.60% (DistilBERT)**
+**Intent classification accuracy: 83.08% (TF-IDF + Logistic Regression, trained on 1,001 samples)**
 
 ---
 
@@ -108,19 +107,49 @@ Every user utterance goes through 14 stages:
 
 ## 4. ML Intent Classification
 
-Three models trained and evaluated on **1001 labeled queries** across **8 intent classes**:
+A custom **TF-IDF + Logistic Regression** classifier trained and evaluated entirely from scratch on real multilingual (English + Hinglish) admissions queries.
 
-| Model | Accuracy |
+### Training Results
+
+| Metric | Value |
 |---|---|
-| Logistic Regression (TF-IDF) | 89.53% |
-| SVM (TF-IDF) | 90.70% |
-| **DistilBERT (Fine-tuned)** | **93.60%** |
+| **Test Accuracy** | **83.08%** |
+| **Macro F1 Score** | **0.8354** |
+| Weighted F1 Score | 0.8312 |
+| CV Mean F1 (5-fold) | 0.8376 ± 0.0264 |
+| Training samples | 800 (80% split) |
+| Test samples | 201 (20% split) |
+| Failure cases | 34 / 201 documented |
+
+### Per-Class Breakdown
+
+| Intent | Precision | Recall | F1 |
+|---|---|---|---|
+| scholarship | 0.9545 | 0.9130 | **0.9333** |
+| hostel | 0.8214 | 0.9583 | **0.8846** |
+| fees | 0.8333 | 0.8696 | 0.8511 |
+| admission | 0.9130 | 0.7778 | 0.8400 |
+| location | **1.0000** | 0.7059 | 0.8276 |
+| courses | 0.8333 | 0.7692 | 0.8000 |
+| about | 0.6957 | 0.8889 | 0.7805 |
+| placement | 0.8182 | 0.7200 | 0.7660 |
 
 **Intent classes:** `fees` · `scholarship` · `placement` · `admission` · `courses` · `hostel` · `location` · `about`
 
-**Dataset:** `data/intent_dataset.csv` — 1001 samples, balanced across 8 classes
+**Dataset:** `backend/data/intent_dataset.csv` — 1,001 samples, 8 intent classes, multilingual (English + Hinglish)
 
-**Evaluation metrics:** Accuracy, Precision, Recall, F1-score, ROC-AUC (all classes > 0.97)
+**Model:** `nlp_service/train_intent_model.py` — TF-IDF (bigram, 8000 features) + Logistic Regression (C=5.0)
+
+**Architecture:** Hybrid system — ML model runs first (confidence threshold ≥ 0.45), falls back to regex-based `detectIntent()` if unavailable or uncertain. Ensures zero degradation if Python service is offline.
+
+### To retrain the model
+
+```bash
+cd nlp_service
+python train_intent_model.py
+```
+
+Outputs: `intent_model.pkl`, `evaluation_report.txt`, `confusion_matrix.png`, `failure_cases.csv`
 
 ---
 
@@ -136,11 +165,12 @@ Runs on **port 5001** alongside the Node.js backend.
 | Word Embeddings | Word2Vec (Gensim) | Query expansion |
 
 **Endpoints:**
-- `GET /health` — service status
+- `GET /health` — service status (now includes `ml_intent_classifier` field)
 - `POST /semantic-search` — Sentence-BERT + FAISS search
 - `POST /ner` — spaCy + custom NER
 - `POST /similar-words` — Word2Vec similarity
 - `POST /analyze` — full NLP analysis
+- `POST /predict-intent` — ML intent classification (TF-IDF + LogReg, returns intent + per-class confidence scores)
 
 ---
 
@@ -175,10 +205,10 @@ bmu-advanced-call-agent/
 │   │   ├── server.js                      # Express + WebSocket server
 │   │   ├── config.js                      # Environment config
 │   │   ├── realtime/
-│   │   │   ├── pipeline.js                # Main NLP pipeline (14 stages)
+│   │   │   ├── pipeline.js                # Main NLP pipeline (15 stages)
 │   │   │   └── sessionManager.js          # Session state
 │   │   └── services/
-│   │       ├── nlpService.js              # Tokenization, stemming, OOV, intent
+│   │       ├── nlpService.js              # Tokenization, stemming, OOV, intent + detectIntentHybrid()
 │   │       ├── spellCorrectionService.js  # Levenshtein spell correction
 │   │       ├── entityExtractionService.js # Rule-based NER
 │   │       ├── semanticSimilarityService.js # TF-IDF cosine similarity
@@ -187,7 +217,7 @@ bmu-advanced-call-agent/
 │   │       ├── tfidfService.js            # TF-IDF document retrieval
 │   │       ├── llmService.js              # Ollama LLM integration
 │   │       ├── piperTtsService.js         # Piper TTS (emotion-adaptive)
-│   │       ├── pythonNlpService.js        # Python microservice client
+│   │       ├── pythonNlpService.js        # Python microservice client + predictIntentML()
 │   │       ├── emotionService.js          # Emotion detection
 │   │       ├── conversationMemoryService.js # Context-aware dialogue
 │   │       ├── responseQualityService.js  # Quality enforcement
@@ -200,12 +230,14 @@ bmu-advanced-call-agent/
 │   │   └── app.js                         # Frontend logic
 │   ├── data/
 │   │   ├── bmu_facts.json                 # Knowledge base (25 topics, EN+HI)
-│   │   ├── intent_dataset.csv             # ML training data (1001 samples)
+│   │   ├── intent_dataset.csv             # ML training data (1,001 samples)
 │   │   └── session_store.json             # Persisted sessions
-│   ├── .env                               # Environment variables
+│   ├── .env                               # Environment variables (not in git)
 │   └── package.json
 ├── nlp_service/
 │   ├── nlp_server.py                      # Python Flask NLP microservice
+│   ├── train_intent_model.py              # ML training + evaluation script
+│   ├── intent_model.pkl                   # Trained model (generated, not in git)
 │   └── requirements.txt                   # Python dependencies
 └── README.md
 ```
@@ -233,9 +265,18 @@ npm install
 
 ```bash
 cd nlp_service
-pip install flask flask-cors sentence-transformers faiss-cpu spacy gensim numpy
+pip install flask flask-cors sentence-transformers faiss-cpu spacy gensim numpy scikit-learn pandas matplotlib seaborn
 python -m spacy download en_core_web_sm
 ```
+
+### Step 3 — Train the ML Intent Classifier
+
+```bash
+cd nlp_service
+python train_intent_model.py
+```
+
+This generates `intent_model.pkl`, `evaluation_report.txt`, `confusion_matrix.png`, and `failure_cases.csv`.
 
 ### Step 3 — Install Ollama and pull model
 
@@ -335,15 +376,17 @@ node src/server.js
 
 ## 11. Evaluation & Accuracy
 
-### ML Intent Classification (Colab)
+### ML Intent Classification (Local — TF-IDF + Logistic Regression)
 
-| Model | Accuracy | Macro AUC |
-|---|---|---|
-| Logistic Regression | 89.53% | >0.97 |
-| SVM | 90.70% | >0.97 |
-| **DistilBERT** | **93.60%** | **>0.97** |
+| Metric | Value |
+|---|---|
+| **Test Accuracy** | **83.08%** |
+| **Macro F1** | **0.8354** |
+| CV Mean F1 (5-fold) | 0.8376 ± 0.0264 |
+| Training samples | 800 |
+| Test samples | 201 |
 
-Training data: 1001 samples, 8 classes
+Run `python nlp_service/train_intent_model.py` to reproduce all results.
 
 ### Topic Routing (Production Pipeline)
 
@@ -388,11 +431,12 @@ Training data: 1001 samples, 8 classes
 
 | Endpoint | Method | Description |
 |---|---|---|
-| /health | GET | Service status |
+| /health | GET | Service status (includes ml_intent_classifier) |
 | /semantic-search | POST | Sentence-BERT + FAISS |
 | /ner | POST | spaCy + custom NER |
 | /similar-words | POST | Word2Vec similarity |
 | /analyze | POST | Full NLP analysis |
+| /predict-intent | POST | ML intent classification (TF-IDF + LogReg) |
 
 ---
 
@@ -417,7 +461,9 @@ Training data: 1001 samples, 8 classes
 ### NLP
 - 4-layer OOV resolution
 - 300+ Hinglish concept mappings
-- ML intent classification (DistilBERT 93.60%)
+- **Custom trained ML intent classifier** (TF-IDF + Logistic Regression, 83.08% accuracy, macro F1 0.84)
+- **Hybrid intent detection** — ML primary, regex fallback (zero degradation if offline)
+- **Evaluation pipeline** — Precision, Recall, F1, Confusion Matrix, failure case analysis
 - spaCy NER + custom entity extraction
 - TF-IDF + Sentence-BERT semantic search
 - Word2Vec query expansion
