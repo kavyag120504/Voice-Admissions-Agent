@@ -1,7 +1,8 @@
 # BMU Voice Admissions Agent — Complete Documentation
 
 > A real-time, voice-based AI admissions counselor for BML Munjal University (BMU).
-> Built as an NLP project using Node.js, Python, Ollama (local LLM), Piper TTS, and a custom multi-layer NLP pipeline with a **trained ML intent classifier (TF-IDF + Logistic Regression, 83% accuracy, macro F1 0.84)**.
+> Built as an NLP project using Node.js, Python, Ollama (local LLM), Piper TTS, and a custom multi-layer NLP pipeline.
+> Features a **trained ML intent classifier (TF-IDF + LogReg, 83% accuracy)** and a **child vs adult voice classifier (MFCC + SVM, 87.86% accuracy, macro F1 0.8786)**.
 
 ---
 
@@ -11,15 +12,16 @@
 2. [System Architecture](#2-system-architecture)
 3. [Full NLP Pipeline](#3-full-nlp-pipeline)
 4. [ML Intent Classification](#4-ml-intent-classification)
-5. [Python NLP Microservice](#5-python-nlp-microservice)
-6. [Tech Stack](#6-tech-stack)
-7. [Project Structure](#7-project-structure)
-8. [Setup & Installation](#8-setup--installation)
-9. [Running the Project](#9-running-the-project)
-10. [Knowledge Base](#10-knowledge-base)
-11. [Evaluation & Accuracy](#11-evaluation--accuracy)
-12. [API Endpoints](#12-api-endpoints)
-13. [Features](#13-features)
+5. [Child vs Adult Voice Classifier](#5-child-vs-adult-voice-classifier)
+6. [Python NLP Microservice](#6-python-nlp-microservice)
+7. [Tech Stack](#7-tech-stack)
+8. [Project Structure](#8-project-structure)
+9. [Setup & Installation](#9-setup--installation)
+10. [Running the Project](#10-running-the-project)
+11. [Knowledge Base](#11-knowledge-base)
+12. [Evaluation & Accuracy](#12-evaluation--accuracy)
+13. [API Endpoints](#13-api-endpoints)
+14. [Features](#14-features)
 
 ---
 
@@ -153,7 +155,54 @@ Outputs: `intent_model.pkl`, `evaluation_report.txt`, `confusion_matrix.png`, `f
 
 ---
 
-## 5. Python NLP Microservice
+## 5. Child vs Adult Voice Classifier
+
+A standalone **audio-based binary classifier** trained on real speech data from the **Mexican Emotional Speech Database (MESD)** to detect whether a speaker is a child or adult from their voice.
+
+### Results
+
+| Metric | Value |
+|---|---|
+| **Test Accuracy** | **87.86%** |
+| **Macro F1 Score** | **0.8786** |
+| CV Mean F1 (5-fold) | 0.8652 ± 0.0175 |
+| Training samples | 689 (80% split) |
+| Test samples | 173 (20% split) |
+
+### Per-Class Results
+
+| Class | Precision | Recall | F1 |
+|---|---|---|---|
+| adult | 0.8824 | 0.8721 | 0.8772 |
+| child | 0.8750 | 0.8851 | 0.8800 |
+
+**Dataset:** MESD (Mexican Emotional Speech Database) — 862 WAV files, 430 adult / 432 child, perfectly balanced
+
+**Labeling:** Decoded directly from filenames (`_A_` = adult, `_B_` = child) — no manual labeling needed
+
+**Features extracted (per file):**
+- 40 MFCC coefficients (mean + std) → 80 features
+- 40 Delta-MFCC (mean + std) → 80 features — captures vocal tract dynamics
+- 64 Mel-spectrogram bands (mean + std) → 128 features
+- Fundamental frequency / pitch (mean, std, min, max) → 4 features — children have higher F0
+- Zero-crossing rate, RMS energy, Spectral centroid → 6 features
+- **Total: ~298 acoustic features per audio clip**
+
+**Model:** SVM with RBF kernel (C=10, gamma=scale) + StandardScaler
+
+**Key insight:** Children have higher fundamental frequency (F0), shorter vocal tract, and different spectral characteristics — all captured by MFCC + pitch features.
+
+### To retrain
+
+```bash
+python audio_ml/train_child_adult_classifier.py
+```
+
+Outputs: `child_adult_model.pkl`, `child_adult_report.txt`, `child_adult_confusion_matrix.png`
+
+---
+
+## 6. Python NLP Microservice
 
 Runs on **port 5001** alongside the Node.js backend.
 
