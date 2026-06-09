@@ -68,6 +68,15 @@ logs/
 # (keep Dockerfile but ignore build artifacts)
 .dockerignore
 
+# ── Audio ML generated outputs (run train_child_adult_classifier.py to regenerate) ─
+audio_ml/child_adult_model.pkl
+audio_ml/child_adult_features.npz
+audio_ml/child_adult_confusion_matrix.png
+audio_ml/child_adult_report.txt
+
+# ── MESD dataset (large audio dataset, not source code) ──────────────────────
+cy34mh68j9-5/
+
 # ── Temporary files ───────────────────────────────────────────────────────────
 *.tmp
 *.temp
