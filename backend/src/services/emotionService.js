@@ -48,7 +48,7 @@ function detectLanguageMode(text) {
   if (hasDevanagari) return "hindi";
 
   // Detect Roman Hinglish — common Hindi words written in English
-  const hinglishWords = /\b(kya|hai|hain|kaise|kitna|kitni|kahan|kaun|kaunsi|mein|se|ko|ka|ki|ke|aur|ya|bhi|nahi|hoga|milega|milegi|chahiye|batao|bata|please|aap|main|hum|toh|agar|lekin|par|pe|woh|yeh|ye|ek|do|teen|char|sab|kuch|bahut|thoda|zyada|accha|theek|sahi|galat|lakh|crore|rupee|rupees|paisa|paise|fee|fees|hostel|admission|scholarship|placement|course|college|university)\b/i;
+  const hinglishWords = /\b(kya|hai|hain|kaise|kitna|kitni|kahan|kaun|kaunsi|mein|se|ko|ka|ki|ke|aur|ya|bhi|nahi|nhi|hoga|milega|milegi|chahiye|batao|bata|aap|main|hum|toh|agar|lekin|par|pe|woh|yeh|ye|ek|do|teen|char|sab|kuch|bahut|thoda|zyada|accha|theek|sahi|galat|lakh|crore|rupee|rupees|paisa|paise)\b/i;
 
   if (hinglishWords.test(input)) return "hinglish";
 
